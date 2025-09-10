@@ -7,29 +7,29 @@ import reducer from './reducer'
 const store = createStore(reducer)
 
 const App = () => {
-  const good = () => {
-    store.dispatch({
-      type: 'GOOD'
-    })
-  }
+	const evaluate = (type) => {
+		store.dispatch({
+			type: type
+		})
+	}
 
-  return (
-    <div>
-      <button onClick={good}>good</button> 
-      <button>ok</button> 
-      <button>bad</button>
-      <button>reset stats</button>
-      <div>good {store.getState().good}</div>
-      <div>ok</div>
-      <div>bad</div>
-    </div>
-  )
+	return (
+		<div>
+			<button onClick={() => evaluate('GOOD')}>good</button>
+			<button onClick={() => evaluate('OK')}>ok</button>
+			<button onClick={() => evaluate('BAD')}>bad</button>
+			<button onClick={() => evaluate('ZERO')}>reset stats</button>
+			<div>good {store.getState().good}</div>
+			<div>ok {store.getState().ok}</div>
+			<div>bad {store.getState().bad}</div>
+		</div>
+	)
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 const renderApp = () => {
-  root.render(<App />)
+	root.render(<App />)
 }
 
 renderApp()
